@@ -1,6 +1,6 @@
+extends Node
 ## 角色状态机
 class_name StateMachine
-extends Node
 
 # 状态变量与setter
 var current_state: int = -1:
