@@ -367,7 +367,7 @@ metadata/_edit_horizontal_guides_ = [207.0]
 
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
 z_index = 2
-position = Vector2(376, -27)
+position = Vector2(154, 41)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, -15)
@@ -389,8 +389,6 @@ tile_map_data = PackedByteArray("AAAGAAUAAQACAAAAAAAHAAUAAQADAAAAAAAIAAUAAQABAAA
 tile_set = SubResource("TileSet_y32ns")
 
 [node name="Decorations" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
 [node name="Background" type="ParallaxBackground" parent="Decorations"]
 

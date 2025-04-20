@@ -1,8 +1,9 @@
-Timer
+Node
 Node2D
+StateMachine
+Timer
 ParallaxLayer
 ParallaxBackground
-Node
 Camera2D
 AnimationPlayer
 CollisionShape2D

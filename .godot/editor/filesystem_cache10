@@ -1,8 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1745112437
-player.gd::GDScript/GDScript::985451250340954373::1745072573::0::1::::<>CharacterBody2D<><>0<>0<><>::
-player.tscn::PackedScene/PackedScene::105796529001803807::1745111932::0::1::::<><><>0<>0<><>::uid://ci7tk3gs6n6ry::::res://assets/char_red_1.png<>uid://obmidi7fw8s4::::res://player.gd
-world.gd::GDScript::3010745809984937033::1745112356::0::1::::<>Node2D<><>0<>0<><>::
+::res://::1745137170
+player.gd::GDScript::985451250340954373::1745137133::0::1::::<>CharacterBody2D<><>0<>0<><>::
+player.tscn::PackedScene::105796529001803807::1745137123::0::1::::<><><>0<>0<><>::uid://ci7tk3gs6n6ry::::res://assets/char_red_1.png<>uid://obmidi7fw8s4::::res://player.gd<>uid://c1h77b4ljqhhv::::res://classes/StateMachine.gd
+world.gd::GDScript/GDScript::3010745809984937033::1745112356::0::1::::<>Node2D<><>0<>0<><>::
+world.tscn::PackedScene::149340198057556612::1745137123::0::1::::<><><>0<>0<><>::uid://x2xl17a2g5pm::::res://assets/Tree-Assets.png<>uid://bi5osqoijj61b::::res://world.gd<>uid://bripodqek0v8::::res://player.tscn<>uid://buk3jbwxjw3wv::::res://assets/Legacy-Fantasy/Background/Background.png<>uid://5svbwk1mdulj::::res://assets/Legacy-Fantasy/Trees/Background.png<>uid://bq53i6jd7wadd::::res://assets/Legacy-Fantasy/Assets/Tree-Assets.png
 ::res://assets/::1745112091
 char_red_1.png::CompressedTexture2D/CompressedTexture2D::5401585166204427758::1745069255::1745111932::1::::<><><>0<>0<>446d73ce820366ae1e58c48359c59040<>res://.godot/imported/char_red_1.png-66c0b833741559aa3ae054d8b7660782.ctex::
 icon.svg::CompressedTexture2D/CompressedTexture2D::6084657798862906428::1745068272::1745111942::1::::<><><>0<>0<>87f141e7272379785ee0b2d68a1351a4<>res://.godot/imported/icon.svg-56083ea2a1f1a4f1e49773bdc6d7826c.ctex::
@@ -28,9 +29,8 @@ Interior-01.png::CompressedTexture2D/CompressedTexture2D::2903583553698213960::1
 Props-Rocks.png::CompressedTexture2D/CompressedTexture2D::8823599765300580345::1745112071::1745112091::1::::<><><>0<>0<>97714525085a7e6ad8b692b7653df567<>res://.godot/imported/Props-Rocks.png-a0da60deef5def838987fd13af1bf58b.ctex::
 Tiles.png::CompressedTexture2D/CompressedTexture2D::3981988149450609264::1745112071::1745112091::1::::<><><>0<>0<>feb3b2a1db2798712542331a5ef753e7<>res://.godot/imported/Tiles.png-46c8889609af788be06243ad481019df.ctex::
 Tree-Assets.png::CompressedTexture2D/CompressedTexture2D::3573089518979140665::1745112071::1745112091::1::::<><><>0<>0<>e978547af23ead41a793753b6650c60a<>res://.godot/imported/Tree-Assets.png-9d843b8e99839c4a90c746501a849323.ctex::
-::res://assets/Legacy-Fantasy/Background/::1745112437
+::res://assets/Legacy-Fantasy/Background/::1745112443
 Background.png::CompressedTexture2D/CompressedTexture2D::3812557569503938449::1745112071::1745112091::1::::<><><>0<>0<>3c1947bf8cdbfc24701d308c17f7e2e3<>res://.godot/imported/Background.png-067899076b716897cdd8d2529bbb0957.ctex::
-world.tscn::PackedScene::149340198057556612::1745112428::0::1::::<><><>0<>0<><>::uid://x2xl17a2g5pm::::res://assets/Tree-Assets.png<>uid://bi5osqoijj61b::::res://world.gd<>uid://bripodqek0v8::::res://player.tscn
 ::res://assets/Legacy-Fantasy/Character/::1745112071
 ::res://assets/Legacy-Fantasy/Character/Attack-01/::1745112091
 Attack-01-Sheet.png::CompressedTexture2D/CompressedTexture2D::7305288261213663117::1745112071::1745112091::1::::<><><>0<>0<>4a24f015d93e7ac5d03b5b1636ba84af<>res://.godot/imported/Attack-01-Sheet.png-b57702fc6f37bdcd7c2effbeac952696.ctex::
@@ -86,3 +86,5 @@ Golden-Tree.png::CompressedTexture2D/CompressedTexture2D::1882107339022561699::1
 Green-Tree.png::CompressedTexture2D/CompressedTexture2D::3050512689598021038::1745112071::1745112091::1::::<><><>0<>0<>cf2cebcb2ac74fe1fa8671fafa7e3c4c<>res://.godot/imported/Green-Tree.png-efc851d02dc292788c231dd7d70225a2.ctex::
 Red-Tree.png::CompressedTexture2D/CompressedTexture2D::8832242748884466777::1745112071::1745112091::1::::<><><>0<>0<>d2e2088b0bd6b02fe4dfa8da995db03b<>res://.godot/imported/Red-Tree.png-503099753900b88ddca43bb0f1e6e163.ctex::
 Yellow-Tree.png::CompressedTexture2D/CompressedTexture2D::3831364143816486040::1745112071::1745112091::1::::<><><>0<>0<>4351936ad509c94da6d776b4f08e6107<>res://.godot/imported/Yellow-Tree.png-a021a8f5a7a54e36b571501bebb26904.ctex::
+::res://classes/::1745136732
+StateMachine.gd::GDScript::6614202133262078159::1745136732::0::1::::StateMachine<>Node<><>0<>0<><>::
