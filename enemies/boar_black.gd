@@ -11,6 +11,11 @@ enum State {
 @onready var floor_checker: RayCast2D = $Graphics/FloorChecker
 @onready var calm_down_timer: Timer = $CalmDownTimer
 
+func can_see_player() -> bool:
+	if not player_checker.is_colliding():
+		return false
+	return player_checker.get_collider() is Player
+
 # 每一帧的逻辑
 func tick_physics(state: State,delta:float) -> void:
 	match state:
@@ -22,14 +27,15 @@ func tick_physics(state: State,delta:float) -> void:
 			if wall_checker.is_colliding() or not floor_checker.is_colliding():
 				direction *= -1
 			move(max_speed,delta)
-			if player_checker.is_colliding():
+			if can_see_player():
 				calm_down_timer.start()
 
 # 获取下一个状态
 func get_next_state(state:State) -> State:
 	# 野猪碰见玩家则立即冲向玩家
-	if player_checker.is_colliding():
+	if can_see_player():
 		return State.RUN
+
 	match state:
 		State.IDLE:
 			# 野猪空闲超过2秒则进入走动状态
@@ -47,8 +53,9 @@ func get_next_state(state:State) -> State:
 				return State.WALK
 	# 保持当前状态不变
 	return state
+
+
 # 状态转换
-#@warning_ignore("unused_parameter")
 func transition_state(from: State, to: State) -> void:
 	#print("[%s] %s => %s" %[
 		#Engine.get_physics_frames(),
@@ -66,7 +73,6 @@ func transition_state(from: State, to: State) -> void:
 			animation_player.play("walk")
 			# 如果前方是悬崖，则野猪转身
 			if not floor_checker.is_colliding():
-				#@warning_ignore("int_as_enum_without_cast")
 				direction *= -1
 				# 转身后强制更新射线的缓存
 				floor_checker.force_raycast_update()

@@ -20,7 +20,7 @@ enum Diection {
 		graphics.scale.x = -direction
 
 @export var max_speed: float = 180
-@export var acceleration: float = 200
+@export var acceleration: float = 2000
 
 
 
@@ -29,6 +29,6 @@ var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as floa
 func move(speed: float, delta: float) -> void:
 	# 修改速度向量
 	velocity.x = move_toward(velocity.x, speed * direction,acceleration  * delta) 
-	velocity.y += default_gravity * delta
+	velocity.y +=  default_gravity * delta
 	
 	move_and_slide()

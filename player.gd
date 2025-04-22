@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 # 状态集
@@ -8,16 +9,27 @@ enum State {
 	FALL,
 	LANDING,
 	WALL_SLIDING,
+	WALL_JUMP,
+	ATTACK_1,
+	ATTACK_2,
+	ATTACK_3,
 }
 
-const GROUND_STATUS := [State.IDLE,State.RUNNING,State.LANDING]
+const GROUND_STATUS := [
+	State.IDLE,State.RUNNING,State.LANDING,
+	State.ATTACK_1,State.ATTACK_2,State.ATTACK_3
+]
 const RUN_SPEED := 160.0
 const FLOOR_ACCELERATION := RUN_SPEED / 0.2
-const AIR_ACCELERATION := RUN_SPEED / 0.02
+const AIR_ACCELERATION := RUN_SPEED / 0.1
 const JUMP_VELOCITY := -400.0
+const WALL_JUMP_VELOCITY := Vector2(400,-280)
+
+@export var can_combo := false
 
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
 var is_first_tick := false
+var is_combo_requested := false
 
 @onready var graphics: Node2D = $Graphics
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -25,6 +37,7 @@ var is_first_tick := false
 @onready var jump_request_timer: Timer = $JumpRequestTimer
 @onready var hand_checker: RayCast2D = $Graphics/HandChecker
 @onready var foot_checker: RayCast2D = $Graphics/FootChecker
+@onready var state_machine: StateMachine = $StateMachine
 
 
 # 预输入 （缓冲跳跃）
@@ -37,6 +50,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if velocity.y < JUMP_VELOCITY / 2:
 			velocity.y = JUMP_VELOCITY / 2
 	
+	if event.is_action_pressed("attack") and can_combo:
+		is_combo_requested = true
 
 # 动作
 func tick_physics(state: State,delta: float) -> void:
@@ -50,10 +65,20 @@ func tick_physics(state: State,delta: float) -> void:
 		State.FALL:
 			move(default_gravity,delta)
 		State.LANDING:
-			stand(delta)
+			stand(default_gravity,delta)
 		State.WALL_SLIDING:
 			move(default_gravity / 3, delta)
 			graphics.scale.x = get_wall_normal().x
+		State.WALL_JUMP:
+			if state_machine.state_time < 0.1:
+				stand(0.0 if is_first_tick else default_gravity,delta)
+				graphics.scale.x = get_wall_normal().x
+			else:
+				move(default_gravity,delta)
+			move(0.0 if is_first_tick else default_gravity, delta)
+		State.ATTACK_1,State.ATTACK_2,State.ATTACK_3:
+			stand(default_gravity,delta)
+
 	is_first_tick = false
 
 func move(gravity: float, delta: float) -> void:
@@ -69,11 +94,15 @@ func move(gravity: float, delta: float) -> void:
 	
 	move_and_slide()
 
-func stand(delta: float) -> void:
+func stand(gravity: float,delta: float) -> void:
 	var acceleration := FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
 	velocity.x = move_toward(velocity.x, 0.0,acceleration  * delta) 
-	velocity.y += default_gravity * delta
+	velocity.y += gravity * delta
 	move_and_slide()
+
+# 是否可以在墙上滑行（手和脚要碰到墙壁）
+func can_wall_slide() -> bool:
+	return is_on_wall() and hand_checker.is_colliding() and foot_checker.is_colliding()
 
 # 事件
 func get_next_state(state: State) -> State:
@@ -83,7 +112,11 @@ func get_next_state(state: State) -> State:
 	var should_jump := can_jump and jump_request_timer.time_left > 0
 	if should_jump:
 		return State.JUMP
-
+	
+	if state in GROUND_STATUS and not is_on_floor():
+		return State.FALL
+	
+	
 	# 获得水平输入方向
 	var direction := Input.get_axis("move_left","move_right")
 	# 判断角色是否静止
@@ -92,13 +125,13 @@ func get_next_state(state: State) -> State:
 	# 根据当前状态决定下一个状态
 	match state:
 		State.IDLE:
-			if not is_on_floor():
-				return State.FALL
+			if Input.is_action_just_pressed("attack"):
+				return State.ATTACK_1
 			if not is_still:
 				return State.RUNNING
 		State.RUNNING:
-			if not is_on_floor():
-				return State.FALL
+			if Input.is_action_just_pressed("attack"):
+				return State.ATTACK_1
 			if is_still:
 				return State.IDLE
 		State.JUMP:
@@ -115,14 +148,36 @@ func get_next_state(state: State) -> State:
 			if not animation_player.is_playing():
 				return State.IDLE
 		State.WALL_SLIDING:
+			if jump_request_timer.time_left > 0:
+				return State.WALL_JUMP
 			if is_on_floor():
 				return State.IDLE
 			if not is_on_wall():
 				return State.FALL
+		State.WALL_JUMP:
+			if can_wall_slide() and not is_first_tick:
+				return State.WALL_SLIDING
+			if velocity.y >= 0:
+				return State.FALL
+		State.ATTACK_1:
+			if not animation_player.is_playing():
+				return State.ATTACK_2 if is_combo_requested else State.IDLE
+		State.ATTACK_2:
+			if not animation_player.is_playing():
+				return State.ATTACK_3 if is_combo_requested else State.IDLE
+		State.ATTACK_3:
+			if not animation_player.is_playing():
+				return State.IDLE
 	return state
 
 # 转换
 func transition_state(from: State,to: State) -> void:
+	#print("[%s] %s => %s" %[
+		#Engine.get_physics_frames(),
+		#State.keys()[from] if from != -1 else "<START>",
+		#State.keys()[to],
+	#])
+	
 	if from not in GROUND_STATUS and to in GROUND_STATUS:
 		coyote_timer.stop()
 	
@@ -144,4 +199,22 @@ func transition_state(from: State,to: State) -> void:
 			animation_player.play("landing")
 		State.WALL_SLIDING:
 			animation_player.play("wall_sliding")
+		State.WALL_JUMP:
+			animation_player.play("jump")
+			velocity = WALL_JUMP_VELOCITY
+			velocity.x *= get_wall_normal().x
+			jump_request_timer.stop()
+		State.ATTACK_1:
+			animation_player.play("attack_1")
+			is_combo_requested = false
+		State.ATTACK_2:
+			animation_player.play("attack_2")
+			is_combo_requested = false
+		State.ATTACK_3:
+			animation_player.play("attack_3")
+			is_combo_requested = false
+	#if to == State.WALL_JUMP:
+		#Engine.time_scale = 0.3
+	#if from == State.WALL_JUMP:
+		#Engine.time_scale = 1.0
 	is_first_tick = true

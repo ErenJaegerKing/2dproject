@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg5250koupigt"]
+[gd_scene load_steps=14 format=3 uid="uid://bg5250koupigt"]
 
 [ext_resource type="PackedScene" uid="uid://bun13k4mh5svc" path="res://enemies/enemy.tscn" id="1_f643w"]
 [ext_resource type="Script" uid="uid://cxededd0h4r6e" path="res://enemies/boar_black.gd" id="2_kgvx0"]
 [ext_resource type="Texture2D" uid="uid://d1f1mxmco3ge4" path="res://assets/Legacy-Fantasy/Mob/Boar/Idle/Idle-Sheet-export-Back.png" id="2_w60nl"]
 [ext_resource type="Texture2D" uid="uid://n4ta3vqovpvq" path="res://assets/Legacy-Fantasy/Mob/Boar/Run/Run-Sheet-Black.png" id="3_kgvx0"]
+[ext_resource type="Texture2D" uid="uid://digyrm5xqh4as" path="res://assets/Legacy-Fantasy/Mob/Boar/Hit-Vanish/Hit-Sheet-Black.png" id="4_q8jtq"]
 [ext_resource type="Texture2D" uid="uid://bnb500k15bold" path="res://assets/Legacy-Fantasy/Mob/Boar/Walk/Walk-Base-SheetBlack.png" id="4_w60nl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w60nl"]
+radius = 12.0416
 
 [sub_resource type="Animation" id="Animation_j83uj"]
 length = 0.001
@@ -61,7 +63,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_w60nl")]
+"values": [ExtResource("4_q8jtq")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -228,26 +230,26 @@ collision_layer = 4
 script = ExtResource("2_kgvx0")
 
 [node name="Sprite2D" parent="Graphics" index="0"]
-position = Vector2(0, -16)
+position = Vector2(1, -15)
 texture = ExtResource("2_w60nl")
 hframes = 4
 
 [node name="WallChecker" type="RayCast2D" parent="Graphics" index="1"]
-position = Vector2(0, -11)
-target_position = Vector2(-27, 0)
+position = Vector2(-11, -12)
+target_position = Vector2(-17, 0)
 
 [node name="PlayerChecker" type="RayCast2D" parent="Graphics" index="2"]
-position = Vector2(0, -11)
-target_position = Vector2(-86, 0)
-collision_mask = 2
+position = Vector2(-11, -12)
+target_position = Vector2(-83, 0)
+collision_mask = 3
 
 [node name="FloorChecker" type="RayCast2D" parent="Graphics" index="3"]
-position = Vector2(-16, -1)
+position = Vector2(-13, -3)
 rotation = -0.785397
-target_position = Vector2(-2.82842, 2.82843)
+target_position = Vector2(-4.24264, 4.24265)
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -11)
+position = Vector2(-1, -12)
 shape = SubResource("CircleShape2D_w60nl")
 
 [node name="AnimationPlayer" parent="." index="2"]
