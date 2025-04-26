@@ -1,10 +1,6 @@
 class_name Enemy
 extends CharacterBody2D
 
-@onready var graphics: Node2D = $Graphics
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var state_machine: StateMachine = $StateMachine
-
 # 敌人面朝的方向
 enum Diection {
 	LEFT = -1,
@@ -22,9 +18,13 @@ enum Diection {
 @export var max_speed: float = 180
 @export var acceleration: float = 2000
 
-
-
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
+
+@onready var graphics: Node2D = $Graphics
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var state_machine: StateMachine = $StateMachine
+@onready var status: Status = $Status
+
 
 func move(speed: float, delta: float) -> void:
 	# 修改速度向量

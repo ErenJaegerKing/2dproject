@@ -80,3 +80,9 @@ func transition_state(from: State, to: State) -> void:
 			animation_player.play("run")
 		
 	
+
+
+func _on_hurt_box_hurt(hitbox: HitBox) -> void:
+	status.health -= 1
+	if status.health == 0:
+		queue_free()

@@ -40,7 +40,7 @@ var is_combo_requested := false
 @onready var state_machine: StateMachine = $StateMachine
 
 
-# 预输入 （缓冲跳跃）
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		jump_request_timer.start()
@@ -49,7 +49,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		jump_request_timer.stop()
 		if velocity.y < JUMP_VELOCITY / 2:
 			velocity.y = JUMP_VELOCITY / 2
-	
+
 	if event.is_action_pressed("attack") and can_combo:
 		is_combo_requested = true
 
