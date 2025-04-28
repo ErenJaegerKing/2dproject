@@ -1,12 +1,11 @@
-res://world.tscn
+res://enemies/boar_black.tscn
 res://enemies/boar_black.gd
-res://classes/HitBox.gd
-res://player.tscn
 res://enemies/enemy.gd
+res://classes/HitBox.gd
 res://classes/HurtBox.gd
 res://player.gd
 res://classes/StateMachine.gd
-res://world.gd
-res://enemies/enemy.tscn
-res://enemies/boar_black.tscn
 res://classes/Status.gd
+res://world.gd
+res://classes/Damage.gd
+res://world.tscn

@@ -2,12 +2,12 @@ class_name Enemy
 extends CharacterBody2D
 
 # 敌人面朝的方向
-enum Diection {
+enum Direction {
 	LEFT = -1,
 	RIGHT = +1,
 }
 
-@export var direction := Diection.LEFT:
+@export var direction := Direction.LEFT:
 	set(v):
 		direction = v
 		# 等待节点ready

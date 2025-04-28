@@ -4,7 +4,13 @@ enum State {
 	IDLE,
 	WALK,
 	RUN,
+	HURT,
+	DYING,
 }
+
+const KNOCKBACK_AMOUNT := 512.0
+
+var pending_damage: Damage
 
 @onready var wall_checker: RayCast2D = $Graphics/WallChecker
 @onready var player_checker: RayCast2D = $Graphics/PlayerChecker
@@ -19,7 +25,7 @@ func can_see_player() -> bool:
 # 每一帧的逻辑
 func tick_physics(state: State,delta:float) -> void:
 	match state:
-		State.IDLE:
+		State.IDLE,State.HURT,State.DYING:
 			move(0.0,delta)
 		State.WALK:
 			move(max_speed / 3, delta)
@@ -32,25 +38,36 @@ func tick_physics(state: State,delta:float) -> void:
 
 # 获取下一个状态
 func get_next_state(state:State) -> State:
-	# 野猪碰见玩家则立即冲向玩家
-	if can_see_player():
-		return State.RUN
-
+	if status.health == 0:
+		return State.DYING
+	
+	if pending_damage:
+		return State.HURT
+	
 	match state:
 		State.IDLE:
+			# 野猪碰见玩家则立即冲向玩家
+			if can_see_player():
+				return State.RUN
 			# 野猪空闲超过2秒则进入走动状态
 			if state_machine.state_time > 2:
 				return State.WALK
 		
 		State.WALK:
 			# 野猪碰到墙壁或者前面没路的时候进入空闲状态
+			if can_see_player():
+				return State.RUN
 			if wall_checker.is_colliding() or not floor_checker.is_colliding():
 				return State.IDLE
 		
 		State.RUN:
 			# 野猪的冷静计时器到点后，进入走动状态
-			if calm_down_timer.is_stopped():
+			if not can_see_player() and calm_down_timer.is_stopped():
 				return State.WALK
+		
+		State.HURT:
+			if not animation_player.is_playing():
+				return State.RUN
 	# 保持当前状态不变
 	return state
 
@@ -79,10 +96,30 @@ func transition_state(from: State, to: State) -> void:
 		State.RUN:
 			animation_player.play("run")
 		
+		State.HURT:
+			animation_player.play("hit")
+			
+			# 受伤后扣血并被击退
+			status.health -= pending_damage.amount
+			var dir := pending_damage.source.global_position.direction_to(global_position)
+			velocity = dir * KNOCKBACK_AMOUNT
+			
+			# 获得受击伤害方向
+			if dir.x > 0:
+				direction = Direction.LEFT
+			else:
+				direction = Direction.RIGHT
+			
+			pending_damage = null
+			
+			
+		State.DYING:
+			animation_player.play("die")
 	
 
 
 func _on_hurt_box_hurt(hitbox: HitBox) -> void:
-	status.health -= 1
-	if status.health == 0:
-		queue_free()
+	pending_damage = Damage.new()
+	pending_damage.amount = 1
+	pending_damage.source = hitbox.owner
+	
