@@ -11,6 +11,8 @@ enum State {
 const KNOCKBACK_AMOUNT := 512.0
 
 var pending_damage: Damage
+# 转身
+var isRunBack := false
 
 @onready var wall_checker: RayCast2D = $Graphics/WallChecker
 @onready var player_checker: RayCast2D = $Graphics/PlayerChecker
@@ -33,8 +35,17 @@ func tick_physics(state: State,delta:float) -> void:
 			if wall_checker.is_colliding() or not floor_checker.is_colliding():
 				direction *= -1
 			move(max_speed,delta)
+			
+			# 转身
+			if not can_see_player() and calm_down_timer.time_left < 1.0 and not isRunBack:
+				direction *= -1
+				isRunBack = true
+				move(max_speed,delta)
+			
 			if can_see_player():
 				calm_down_timer.start()
+				isRunBack = false
+
 
 # 获取下一个状态
 func get_next_state(state:State) -> State:
