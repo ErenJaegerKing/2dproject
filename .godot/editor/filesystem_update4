@@ -5,3 +5,6 @@ res://world.tscn
 res://classes/Status.gd
 res://classes/StateMachine.gd
 res://enemies/enemy.gd
+res://ui/status_panel.tscn
+res://ui/status_panel.gd
+res://enemies/boar_black.tscn

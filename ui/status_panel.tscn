@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://ortmoqihj826"]
+
+[ext_resource type="Script" uid="uid://dwkwtaob57xfx" path="res://ui/status_panel.gd" id="1_0jk47"]
+[ext_resource type="Texture2D" uid="uid://vdt58nuydv4v" path="res://assets/Legacy-Fantasy/HUD/Base-01.png" id="1_3plgq"]
+[ext_resource type="Texture2D" uid="uid://dbuobcadj1q6r" path="res://assets/generic_char/red/char_red_1.png" id="2_0jk47"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7nptj"]
+texture = ExtResource("1_3plgq")
+region_rect = Rect2(323, 203, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqk2t"]
+atlas = ExtResource("2_0jk47")
+region = Rect2(20, 23, 14, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jk47"]
+atlas = ExtResource("1_3plgq")
+region = Rect2(307, 21, 58, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3plgq"]
+atlas = ExtResource("1_3plgq")
+region = Rect2(308, 118, 56, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nptj"]
+atlas = ExtResource("1_3plgq")
+region = Rect2(308, 86, 56, 4)
+
+[node name="StatusPanel" type="HBoxContainer"]
+offset_right = 31.0
+offset_bottom = 26.0
+script = ExtResource("1_0jk47")
+
+[node name="AvatarBox" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7nptj")
+
+[node name="Avatar" type="TextureRect" parent="AvatarBox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_uqk2t")
+stretch_mode = 5
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.0
+value = 1.0
+texture_over = SubResource("AtlasTexture_0jk47")
+texture_progress = SubResource("AtlasTexture_3plgq")
+texture_progress_offset = Vector2(1, 1)
+
+[node name="EasedHealthBar" type="TextureProgressBar" parent="HealthBar"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.0
+value = 1.0
+texture_progress = SubResource("AtlasTexture_7nptj")
+texture_progress_offset = Vector2(1, 1)

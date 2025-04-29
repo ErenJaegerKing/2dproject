@@ -1,3 +1,8 @@
+CanvasLayer
+TextureProgressBar
+PanelContainer
+TextureRect
+HBoxContainer
 Timer
 Status
 CollisionShape2D
@@ -8,7 +13,3 @@ RayCast2D
 Node2D
 Node
 StateMachine
-AnimationPlayer
-Sprite2D
-CharacterBody2D
-ParallaxLayer

@@ -2,6 +2,8 @@
 class_name Status
 extends Node
 
+signal health_changed
+
 # 先export初始化，然后再onready初始化
 @export var max_health: int = 3
 
@@ -11,3 +13,4 @@ extends Node
 		if health == v:
 			return
 		health = v
+		health_changed.emit()
