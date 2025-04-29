@@ -1,3 +1,7 @@
-res://enemies/boar_black.tscn
+res://player.tscn
 res://enemies/boar_black.gd
+res://player.gd
 res://world.tscn
+res://classes/Status.gd
+res://classes/StateMachine.gd
+res://enemies/enemy.gd

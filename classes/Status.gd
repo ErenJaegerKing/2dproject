@@ -1,3 +1,4 @@
+## 对象状态存放
 class_name Status
 extends Node
 

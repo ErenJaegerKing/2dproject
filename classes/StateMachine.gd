@@ -1,6 +1,8 @@
-extends Node
 ## 角色状态机
 class_name StateMachine
+extends Node
+
+const KEEP_CURRENT := -1
 
 # 状态变量与setter
 var current_state: int = -1:
@@ -22,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	while true:
 		# 获取下一个状态
 		var next := owner.get_next_state(current_state) as int
-		if current_state == next:
+		if next == KEEP_CURRENT:
 			break
 		current_state = next
 	# 物理更新

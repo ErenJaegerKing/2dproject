@@ -1,3 +1,4 @@
+Timer
 Status
 CollisionShape2D
 HitBox
@@ -6,10 +7,8 @@ Area2D
 RayCast2D
 Node2D
 Node
-Timer
 StateMachine
 AnimationPlayer
 Sprite2D
 CharacterBody2D
 ParallaxLayer
-ParallaxBackground

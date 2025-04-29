@@ -48,9 +48,9 @@ func tick_physics(state: State,delta:float) -> void:
 
 
 # 获取下一个状态
-func get_next_state(state:State) -> State:
+func get_next_state(state:State) -> int:
 	if status.health == 0:
-		return State.DYING
+		return StateMachine.KEEP_CURRENT if state == State.DYING else State.DYING
 	
 	if pending_damage:
 		return State.HURT
@@ -80,7 +80,7 @@ func get_next_state(state:State) -> State:
 			if not animation_player.is_playing():
 				return State.RUN
 	# 保持当前状态不变
-	return state
+	return StateMachine.KEEP_CURRENT
 
 
 # 状态转换

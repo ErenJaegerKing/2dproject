@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bg5250koupigt"]
+[gd_scene load_steps=16 format=3 uid="uid://bg5250koupigt"]
 
 [ext_resource type="PackedScene" uid="uid://bun13k4mh5svc" path="res://enemies/enemy.tscn" id="1_f643w"]
-[ext_resource type="Script" uid="uid://cxededd0h4r6e" path="res://enemies/boar_black.gd" id="2_kgvx0"]
+[ext_resource type="Script" uid="uid://cws5556eyifcd" path="res://enemies/boar_black.gd" id="2_kgvx0"]
 [ext_resource type="Texture2D" uid="uid://d1f1mxmco3ge4" path="res://assets/Legacy-Fantasy/Mob/Boar/Idle/Idle-Sheet-export-Back.png" id="2_w60nl"]
 [ext_resource type="Texture2D" uid="uid://n4ta3vqovpvq" path="res://assets/Legacy-Fantasy/Mob/Boar/Run/Run-Sheet-Black.png" id="3_kgvx0"]
 [ext_resource type="Texture2D" uid="uid://digyrm5xqh4as" path="res://assets/Legacy-Fantasy/Mob/Boar/Hit-Vanish/Hit-Sheet-Black.png" id="4_q8jtq"]
@@ -9,9 +9,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8jtq"]
 size = Vector2(23, 23)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j83uj"]
-size = Vector2(36, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w60nl"]
 radius = 12.0416
@@ -166,6 +163,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"die"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_w60nl"]
@@ -504,7 +515,7 @@ target_position = Vector2(-17, 0)
 
 [node name="PlayerChecker" type="RayCast2D" parent="Graphics" index="2"]
 position = Vector2(-11, -12)
-target_position = Vector2(-83, 0)
+target_position = Vector2(-124, 0)
 collision_mask = 2
 
 [node name="FloorChecker" type="RayCast2D" parent="Graphics" index="3"]
@@ -517,20 +528,10 @@ position = Vector2(-1.5, -11.5)
 shape = SubResource("RectangleShape2D_q8jtq")
 debug_color = Color(0.141783, 0.645871, 0, 0.42)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Graphics/HitBox" index="1"]
-position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_j83uj")
-debug_color = Color(2.69532e-06, 0.64311, 0.305968, 0.42)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graphics/HurtBox" index="0"]
 position = Vector2(-1.5, -11.5)
 shape = SubResource("RectangleShape2D_q8jtq")
 debug_color = Color(0.141783, 0.645871, 0, 0.42)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Graphics/HurtBox" index="1"]
-position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_j83uj")
-debug_color = Color(2.69532e-06, 0.64311, 0.305968, 0.42)
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1, -12)
