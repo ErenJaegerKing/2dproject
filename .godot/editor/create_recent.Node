@@ -1,8 +1,9 @@
-CanvasLayer
+VBoxContainer
 TextureProgressBar
+HBoxContainer
+CanvasLayer
 PanelContainer
 TextureRect
-HBoxContainer
 Timer
 Status
 CollisionShape2D
@@ -12,4 +13,3 @@ Area2D
 RayCast2D
 Node2D
 Node
-StateMachine
