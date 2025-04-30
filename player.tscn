@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bripodqek0v8"]
+[gd_scene load_steps=36 format=3 uid="uid://bripodqek0v8"]
 
 [ext_resource type="Script" uid="uid://obmidi7fw8s4" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dbuobcadj1q6r" path="res://assets/generic_char/red/char_red_1.png" id="2_hqtel"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dumdmsrtcqwm" path="res://classes/HitBox.gd" id="4_2hs0m"]
 [ext_resource type="Script" uid="uid://c23rxqpkdusbi" path="res://classes/Status.gd" id="7_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://ortmoqihj826" path="res://ui/status_panel.tscn" id="8_dw050"]
+[ext_resource type="Texture2D" uid="uid://dcacqpe5j5jys" path="res://assets/gdb-gamepad-2/gdb-keyboard-2.png" id="9_b26j0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sweqy"]
 size = Vector2(12, 31)
@@ -2295,6 +2296,42 @@ _data = {
 &"wall_sliding": SubResource("Animation_1jxqw")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+atlas = ExtResource("9_b26j0")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
+atlas = ExtResource("9_b26j0")
+region = Rect2(96, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
+atlas = ExtResource("9_b26j0")
+region = Rect2(96, 272, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urp6f"]
+atlas = ExtResource("9_b26j0")
+region = Rect2(96, 384, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ghd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvl01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivps1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urp6f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_onrkg")
@@ -2389,5 +2426,10 @@ offset_top = 15.0
 offset_right = 106.0
 offset_bottom = 41.0
 status = NodePath("../../Status")
+
+[node name="InteractableIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -52)
+sprite_frames = SubResource("SpriteFrames_dw050")
+frame_progress = 0.565395
 
 [connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]

@@ -1,0 +1,8 @@
+res://player.tscn
+res://classes/Interactable.gd
+res://player.gd
+res://enemies/boar_black.gd
+res://world.tscn
+res://classes/StateMachine.gd
+res://classes/Status.gd
+res://ui/status_panel.gd

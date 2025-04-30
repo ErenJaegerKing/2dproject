@@ -42,6 +42,7 @@ var is_first_tick := false
 var is_combo_requested := false
 var pending_damage: Damage
 var fall_from_y: float
+var interacting_with: Array[Interactable]
 
 @onready var graphics: Node2D = $Graphics
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -53,6 +54,7 @@ var fall_from_y: float
 @onready var status: Status = $Status
 @onready var invincible_timer: Timer = $InvincibleTimer
 @onready var slide_request_timer: Timer = $SlideRequestTimer
+@onready var interactable_icon: AnimatedSprite2D = $InteractableIcon
 
 
 # 预输入
@@ -71,8 +73,18 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("slide"):
 		slide_request_timer.start()
 
+	if event.is_action_pressed("interact") and interacting_with:
+		interacting_with.back().interact()
+
 # 动作
 func tick_physics(state: State,delta: float) -> void:
+	interactable_icon.visible = not interacting_with.is_empty()
+	
+	if invincible_timer.time_left > 0:
+		graphics.modulate.a = sin(Time.get_ticks_msec() / 20) * 0.5 + 0.5
+	else:
+		graphics.modulate.a = 1
+	
 	match state:
 		State.IDLE:
 			move(default_gravity,delta)
@@ -134,6 +146,16 @@ func slide(delta: float) -> void:
 func die() -> void:
 	get_tree().reload_current_scene()
 
+func register_interactable(v:Interactable) -> void:
+	if state_machine.current_state == State.DYING:
+		return
+	
+	if v in interacting_with:
+		return
+	interacting_with.append(v)
+
+func unregister_interactable(v:Interactable) -> void:
+	interacting_with.erase(v)
 
 # 是否可以在墙上滑行（手和脚要碰到墙壁）
 func can_wall_slide() -> bool:
@@ -148,11 +170,6 @@ func should_slide() -> bool:
 
 # 事件
 func get_next_state(state: State) -> int:
-	if invincible_timer.time_left > 0:
-		graphics.modulate.a = sin(Time.get_ticks_msec() / 20) * 0.5 + 0.5
-	else:
-		graphics.modulate.a = 1
-	
 	if status.health == 0:
 		return StateMachine.KEEP_CURRENT if state == State.DYING else State.DYING
 	
@@ -240,11 +257,11 @@ func get_next_state(state: State) -> int:
 
 # 转换
 func transition_state(from: State,to: State) -> void:
-	print("[%s] %s => %s" %[
-		Engine.get_physics_frames(),
-		State.keys()[from] if from != -1 else "<START>",
-		State.keys()[to],
-	])
+	#print("[%s] %s => %s" %[
+		#Engine.get_physics_frames(),
+		#State.keys()[from] if from != -1 else "<START>",
+		#State.keys()[to],
+	#])
 	
 	if from not in GROUND_STATUS and to in GROUND_STATUS:
 		coyote_timer.stop()
@@ -295,6 +312,7 @@ func transition_state(from: State,to: State) -> void:
 		State.DYING:
 			animation_player.play("die")
 			invincible_timer.stop()
+			interacting_with.clear()
 		State.SLIDING_START:
 			animation_player.play("sliding_start")
 			slide_request_timer.stop()

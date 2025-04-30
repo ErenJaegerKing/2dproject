@@ -1,3 +1,6 @@
+CollisionShape2D
+Interactable
+AnimatedSprite2D
 VBoxContainer
 TextureProgressBar
 HBoxContainer
@@ -6,10 +9,6 @@ PanelContainer
 TextureRect
 Timer
 Status
-CollisionShape2D
 HitBox
 HurtBox
 Area2D
-RayCast2D
-Node2D
-Node
