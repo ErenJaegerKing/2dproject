@@ -1,10 +1,4 @@
-res://worlds/forest.tscn
+res://objects/save_stone.tscn
 res://assets/forest.tres
 res://enemies/boar_black.gd
-res://worlds/cave.tscn
-res://globals/game.tscn
-res://classes/Status.gd
-res://globals/game.gd
-res://classes/Teleporter.gd
-res://player.tscn
-res://ui/status_panel.gd
+res://assets/vignette.gdshader
