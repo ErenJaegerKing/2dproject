@@ -1,4 +1,8 @@
+Node
+EntryPoint
 CollisionShape2D
+Sprite2D
+Teleporter
 Interactable
 AnimatedSprite2D
 VBoxContainer
@@ -8,7 +12,3 @@ CanvasLayer
 PanelContainer
 TextureRect
 Timer
-Status
-HitBox
-HurtBox
-Area2D

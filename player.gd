@@ -1,6 +1,11 @@
 class_name Player
 extends CharacterBody2D
 
+enum Direction {
+	LEFT = -1,
+	RIGHT = +1,
+}
+
 # 状态集
 enum State {
 	IDLE,
@@ -27,7 +32,7 @@ const GROUND_STATUS := [
 const RUN_SPEED := 160.0
 const FLOOR_ACCELERATION := RUN_SPEED / 0.2
 const AIR_ACCELERATION := RUN_SPEED / 0.1
-const JUMP_VELOCITY := -400.0
+const JUMP_VELOCITY := -500.0
 const WALL_JUMP_VELOCITY := Vector2(400,-280)
 const KNOCKBACK_AMOUNT := 512.0
 const SIDE_DURATION := 0.3
@@ -36,6 +41,12 @@ const SLIDING_ENERGY := 4.0
 const LANDING_HEIGHT := 100.0
 
 @export var can_combo := false
+@export var direction := Direction.RIGHT:
+	set(v):
+		direction = v
+		if not is_node_ready():
+			await ready
+		graphics.scale.x = direction
 
 var default_gravity := ProjectSettings.get("physics/2d/default_gravity") as float
 var is_first_tick := false
@@ -51,7 +62,7 @@ var interacting_with: Array[Interactable]
 @onready var hand_checker: RayCast2D = $Graphics/HandChecker
 @onready var foot_checker: RayCast2D = $Graphics/FootChecker
 @onready var state_machine: StateMachine = $StateMachine
-@onready var status: Status = $Status
+@onready var status: Status = Game.player_status
 @onready var invincible_timer: Timer = $InvincibleTimer
 @onready var slide_request_timer: Timer = $SlideRequestTimer
 @onready var interactable_icon: AnimatedSprite2D = $InteractableIcon
@@ -98,11 +109,11 @@ func tick_physics(state: State,delta: float) -> void:
 			stand(default_gravity,delta)
 		State.WALL_SLIDING:
 			move(default_gravity / 4, delta)
-			graphics.scale.x = get_wall_normal().x
+			direction = Direction.LEFT if get_wall_normal().x < 0 else Direction.RIGHT
 		State.WALL_JUMP:
 			if state_machine.state_time < 0.1:
 				stand(0.0 if is_first_tick else default_gravity,delta)
-				graphics.scale.x = get_wall_normal().x
+				direction = Direction.LEFT if get_wall_normal().x < 0 else Direction.RIGHT
 			else:
 				# move(0.0 if is_first_tick else default_gravity, delta)
 				move(default_gravity,delta)
@@ -119,15 +130,15 @@ func tick_physics(state: State,delta: float) -> void:
 	is_first_tick = false
 
 func move(gravity: float, delta: float) -> void:
-	var direction := Input.get_axis("move_left","move_right")
+	var movement := Input.get_axis("move_left","move_right")
 	# 走到跑-均匀加速 
 	var acceleration := FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
-	velocity.x = move_toward(velocity.x, direction * RUN_SPEED,acceleration  * delta) 
+	velocity.x = move_toward(velocity.x, movement * RUN_SPEED,acceleration  * delta) 
 	velocity.y += gravity * delta
 	
 	# 角色反转
-	if not is_zero_approx(direction):
-		graphics.scale.x = -1 if direction < 0 else +1
+	if not is_zero_approx(movement):
+		direction = Direction.LEFT if movement < 0 else Direction.RIGHT
 	
 	move_and_slide()
 
@@ -145,6 +156,7 @@ func slide(delta: float) -> void:
 
 func die() -> void:
 	get_tree().reload_current_scene()
+	Game.player_status.health = Game.player_status.max_health
 
 func register_interactable(v:Interactable) -> void:
 	if state_machine.current_state == State.DYING:
@@ -188,9 +200,9 @@ func get_next_state(state: State) -> int:
 	
 	
 	# 获得水平输入方向
-	var direction := Input.get_axis("move_left","move_right")
+	var movement := Input.get_axis("move_left","move_right")
 	# 判断角色是否静止
-	var is_still := is_zero_approx(direction) and is_zero_approx(velocity.x)
+	var is_still := is_zero_approx(movement) and is_zero_approx(velocity.x)
 	
 	# 根据当前状态决定下一个状态
 	match state:

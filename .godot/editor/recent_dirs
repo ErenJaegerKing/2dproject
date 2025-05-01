@@ -1,6 +1,10 @@
-res://assets/gdb-gamepad-2
+res://worlds
+res://globals
+res://assets
 res://classes
+res://
+res://objects
+res://assets/gdb-gamepad-2
 res://ui
 res://enemies
-res://
 D:/Program/Microsoft VS Code

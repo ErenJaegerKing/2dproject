@@ -15,6 +15,10 @@ run/main_scene="uid://celu1ukg4q65"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+Game="*res://globals/game.tscn"
+
 [display]
 
 window/size/viewport_width=384
