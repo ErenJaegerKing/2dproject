@@ -19,6 +19,10 @@ var isRunBack := false
 @onready var floor_checker: RayCast2D = $Graphics/FloorChecker
 @onready var calm_down_timer: Timer = $CalmDownTimer
 
+# 节点分组为enemies
+# func _ready() -> void:
+#	add_to_group("enemies")
+
 func can_see_player() -> bool:
 	if not player_checker.is_colliding():
 		return false

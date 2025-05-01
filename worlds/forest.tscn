@@ -217,7 +217,10 @@ region_enabled = true
 region_rect = Rect2(208, 200, 128, 80)
 
 [node name="Boar" parent="." instance=ExtResource("9_ma0kv")]
-position = Vector2(319, -27)
+position = Vector2(324, -26)
+
+[node name="Boar2" parent="." instance=ExtResource("9_ma0kv")]
+position = Vector2(528, 50)
 
 [node name="Vegatable" type="Area2D" parent="."]
 position = Vector2(488, -71)

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://ddjsjcdu7mitq" path="res://classes/HurtBox.gd" id="3_a6vjd"]
 [ext_resource type="Script" uid="uid://c23rxqpkdusbi" path="res://classes/Status.gd" id="5_07tka"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_7frlh")
 
 [node name="Graphics" type="Node2D" parent="."]

@@ -7,3 +7,5 @@ res://player.tscn
 res://worlds/forest.tscn
 res://worlds/cave.tscn
 res://worlds/world.gd
+res://enemies/enemy.tscn
+res://enemies/boar_black.tscn
