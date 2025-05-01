@@ -67,6 +67,8 @@ var interacting_with: Array[Interactable]
 @onready var slide_request_timer: Timer = $SlideRequestTimer
 @onready var interactable_icon: AnimatedSprite2D = $InteractableIcon
 
+func _ready() -> void:
+	stand(default_gravity,0.01)
 
 # 预输入
 func _unhandled_input(event: InputEvent) -> void:

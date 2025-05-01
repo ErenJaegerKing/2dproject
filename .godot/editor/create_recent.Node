@@ -1,3 +1,5 @@
+CanvasLayer
+ColorRect
 Node
 EntryPoint
 CollisionShape2D
@@ -8,7 +10,5 @@ AnimatedSprite2D
 VBoxContainer
 TextureProgressBar
 HBoxContainer
-CanvasLayer
 PanelContainer
 TextureRect
-Timer
