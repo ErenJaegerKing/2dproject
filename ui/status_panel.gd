@@ -17,6 +17,11 @@ func _ready() -> void:
 	
 	status.energy_changed.connect(update_energy)
 	update_energy()
+	# 4.2+
+	tree_exited.connect(func ():
+		status.health_changed.disconnect(update_health)
+		status.energy_changed.disconnect(update_energy)
+	)
 
 func update_health(skip_anim := false) -> void:
 	var percentage := status.health / float(status.max_health)
