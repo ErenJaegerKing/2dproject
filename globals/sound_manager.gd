@@ -17,11 +17,19 @@ func play_bgm(stream: AudioStream) -> void:
 	bgm_player.stream = stream
 	bgm_player.play()
 
+# 设置UI音效
 func setup_ui_sounds(node: Node) -> void:
 	var button := node as Button
 	if button:
 		button.pressed.connect(play_sfx.bind("UIPress"))
 		button.focus_entered.connect(play_sfx.bind("UIFocus"))
+		button.mouse_entered.connect(button.grab_focus)
+	 
+	var slider := node as Slider
+	if slider:
+		slider.value_changed.connect(play_sfx.bind("UIPress").unbind(1))
+		slider.focus_entered.connect(play_sfx.bind("UIFocus"))
+		slider.mouse_entered.connect(slider.grab_focus)
 	
 	# 递归标题场景下节点,找到按钮节点，只要是Button就进行信号连接
 	for child in node.get_children():

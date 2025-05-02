@@ -9,3 +9,11 @@ res://ui/title_screen.tscn
 res://assets/forest.tres
 res://ui/volume_slider.tscn
 res://ui/volume_slider.gd
+res://ui/pause_screen.tscn
+res://ui/title_screen.gd
+res://ui/pause_screen.gd
+res://player.tscn
+res://enemies/boar_black.gd
+res://player.gd
+res://worlds/world.gd
+res://worlds/forest.tscn

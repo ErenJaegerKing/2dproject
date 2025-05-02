@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://celu1ukg4q65"]
+[gd_scene load_steps=12 format=4 uid="uid://celu1ukg4q65"]
 
 [ext_resource type="Script" uid="uid://bi5osqoijj61b" path="res://worlds/world.gd" id="1_cys0b"]
 [ext_resource type="PackedScene" uid="uid://bripodqek0v8" path="res://player.tscn" id="2_e5w3y"]
@@ -11,10 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://5svbwk1mdulj" path="res://assets/Legacy-Fantasy/Trees/Background.png" id="7_dkcvd"]
 [ext_resource type="Texture2D" uid="uid://bq53i6jd7wadd" path="res://assets/Legacy-Fantasy/Assets/Tree-Assets.png" id="8_ppqbv"]
 [ext_resource type="PackedScene" uid="uid://bg5250koupigt" path="res://enemies/boar_black.tscn" id="9_auqsf"]
-[ext_resource type="Script" uid="uid://bvx6wk1kff35w" path="res://classes/Interactable.gd" id="10_ma0kv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbfbk"]
-size = Vector2(16, 16)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cys0b")
@@ -227,13 +223,3 @@ position = Vector2(324, -26)
 
 [node name="Boar2" parent="." instance=ExtResource("9_auqsf")]
 position = Vector2(528, 50)
-
-[node name="Vegatable" type="Area2D" parent="."]
-position = Vector2(488, -71)
-script = ExtResource("10_ma0kv")
-metadata/_custom_type_script = "uid://bvx6wk1kff35w"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vegatable"]
-z_index = 2
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_gbfbk")

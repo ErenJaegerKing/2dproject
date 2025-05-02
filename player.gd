@@ -67,7 +67,7 @@ var interacting_with: Array[Interactable]
 @onready var slide_request_timer: Timer = $SlideRequestTimer
 @onready var interactable_icon: AnimatedSprite2D = $InteractableIcon
 @onready var game_over_screen: Control = $CanvasLayer/GameOverScreen
-
+@onready var pause_screen: Control = $CanvasLayer/PauseScreen
 
 func _ready() -> void:
 	stand(default_gravity,0.01)
@@ -90,6 +90,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("interact") and interacting_with:
 		interacting_with.back().interact()
+
+	if event.is_action_pressed("pause"):
+		pause_screen.show_pause()
 
 # 动作
 func tick_physics(state: State,delta: float) -> void:

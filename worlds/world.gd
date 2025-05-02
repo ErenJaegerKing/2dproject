@@ -7,10 +7,6 @@ extends Node2D
 @onready var camera_2d: Camera2D = $Player/Camera2D
 @onready var player: Player = $Player
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		Game.back_to_title()
-
 func _ready() -> void:
 	var used := trunk.get_used_rect()
 	var tile_size := trunk.tile_set.tile_size
