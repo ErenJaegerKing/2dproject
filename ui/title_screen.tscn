@@ -59,6 +59,21 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_rg5jq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("V:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(290, 63)]
+}
+
 [sub_resource type="Animation" id="Animation_sfunj"]
 resource_name = "enter"
 length = 1.5
@@ -73,21 +88,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.353553, 1),
 "update": 0,
 "values": [Vector2(407, 63), Vector2(290, 63)]
-}
-
-[sub_resource type="Animation" id="Animation_rg5jq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("V:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(290, 63)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jprmh"]

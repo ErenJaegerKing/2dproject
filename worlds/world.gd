@@ -40,3 +40,4 @@ func from_dict(dict: Dictionary) -> void:
 		var path := get_path_to(node) as String
 		if path not in dict.enemies_alive:
 			node.queue_free()
+

@@ -31,6 +31,18 @@ window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://classes/": "green",
+"res://enemies/": "teal",
+"res://globals/": "blue",
+"res://objects/": "purple",
+"res://ui/": "pink",
+"res://worlds/": "gray"
+}
+
 [input]
 
 move_left={

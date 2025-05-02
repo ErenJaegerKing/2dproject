@@ -66,6 +66,7 @@ var interacting_with: Array[Interactable]
 @onready var invincible_timer: Timer = $InvincibleTimer
 @onready var slide_request_timer: Timer = $SlideRequestTimer
 @onready var interactable_icon: AnimatedSprite2D = $InteractableIcon
+@onready var game_over_screen: Control = $CanvasLayer/GameOverScreen
 
 
 func _ready() -> void:
@@ -158,8 +159,9 @@ func slide(delta: float) -> void:
 	move_and_slide()
 
 func die() -> void:
-	get_tree().reload_current_scene()
-	Game.player_status.health = Game.player_status.max_health
+	game_over_screen.show_game_over()
+#	get_tree().reload_current_scene()
+#	Game.player_status.health = Game.player_status.max_health
 
 func register_interactable(v:Interactable) -> void:
 	if state_machine.current_state == State.DYING:

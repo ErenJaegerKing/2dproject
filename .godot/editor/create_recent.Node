@@ -1,12 +1,12 @@
+Label
+ColorRect
 AnimationPlayer
 Node2D
 AnimatedSprite2D
 Button
 VBoxContainer
-Label
 AudioStreamPlayer
 Node
-ColorRect
 CanvasLayer
 CanvasModulate
 PointLight2D
