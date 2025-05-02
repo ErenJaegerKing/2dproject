@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwwe126vh1shb"]
 
-[ext_resource type="Shader" uid="uid://fyu5hl1pjhx5" path="res://assets/vignette.gdshader" id="1_a8i0h"]
+[ext_resource type="Shader" uid="uid://fyu5hl1pjhx5" path="res://assets/shader/vignette.gdshader" id="1_a8i0h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e8m1g"]
 shader = ExtResource("1_a8i0h")
@@ -15,3 +15,4 @@ layer = 10
 material = SubResource("ShaderMaterial_e8m1g")
 offset_right = 384.0
 offset_bottom = 216.0
+mouse_filter = 2

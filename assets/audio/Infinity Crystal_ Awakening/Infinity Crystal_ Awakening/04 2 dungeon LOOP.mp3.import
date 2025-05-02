@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ibgbsqj3pw0s"
+path="res://.godot/imported/04 2 dungeon LOOP.mp3-1e7ee4684c8f7635377f109de40da2c1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/04 2 dungeon LOOP.mp3"
+dest_files=["res://.godot/imported/04 2 dungeon LOOP.mp3-1e7ee4684c8f7635377f109de40da2c1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

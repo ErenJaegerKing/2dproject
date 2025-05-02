@@ -11,14 +11,16 @@ config_version=5
 [application]
 
 config/name="2dproject"
-run/main_scene="uid://celu1ukg4q65"
+config/tags=PackedStringArray("2d")
+run/main_scene="uid://chpdcabxpfghi"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://assets/icon.svg"
+config/icon="uid://bmlxc7mrmf55d"
 
 [autoload]
 
 Game="*res://globals/game.tscn"
 Vignette="res://globals/vignette.tscn"
+SoundManager="*res://globals/sound_manager.tscn"
 
 [display]
 
@@ -28,10 +30,6 @@ window/size/always_on_top=true
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/com.timothyqiu.animation-resetter/plugin.cfg")
 
 [input]
 

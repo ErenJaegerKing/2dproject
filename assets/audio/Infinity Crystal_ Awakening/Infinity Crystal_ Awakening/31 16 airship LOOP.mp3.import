@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ci0dmrvvih2dp"
+path="res://.godot/imported/31 16 airship LOOP.mp3-51c97b1cf881db78b5701772ecb0388c.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/31 16 airship LOOP.mp3"
+dest_files=["res://.godot/imported/31 16 airship LOOP.mp3-51c97b1cf881db78b5701772ecb0388c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

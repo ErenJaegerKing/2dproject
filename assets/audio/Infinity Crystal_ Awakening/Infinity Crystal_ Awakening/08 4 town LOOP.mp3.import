@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://f0uyyrq5d1t"
+path="res://.godot/imported/08 4 town LOOP.mp3-881d72c259d2c3893a72bbf77a6ee998.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/08 4 town LOOP.mp3"
+dest_files=["res://.godot/imported/08 4 town LOOP.mp3-881d72c259d2c3893a72bbf77a6ee998.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -538,6 +538,7 @@ position = Vector2(-1, -12)
 shape = SubResource("CircleShape2D_w60nl")
 
 [node name="AnimationPlayer" parent="." index="2"]
+deterministic = true
 libraries = {
 &"": SubResource("AnimationLibrary_eqk03")
 }

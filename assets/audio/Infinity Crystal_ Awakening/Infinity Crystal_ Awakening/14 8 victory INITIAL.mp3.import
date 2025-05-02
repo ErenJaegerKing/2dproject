@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csgbs6vcitoe3"
+path="res://.godot/imported/14 8 victory INITIAL.mp3-776a7cdca90ed28b2bd8568fcbbfcf04.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/14 8 victory INITIAL.mp3"
+dest_files=["res://.godot/imported/14 8 victory INITIAL.mp3-776a7cdca90ed28b2bd8568fcbbfcf04.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

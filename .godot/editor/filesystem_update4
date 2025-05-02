@@ -1,4 +1,12 @@
-res://objects/save_stone.tscn
+res://ui/status_panel.tscn
+res://assets/shader/vignette.gdshader
+res://ui/title_screen.tscn
+res://globals/vignette.tscn
+res://globals/game.tscn
+res://ui/main_screen.tres
+res://ui/title_screen.gd
 res://assets/forest.tres
 res://enemies/boar_black.gd
-res://assets/vignette.gdshader
+res://worlds/forest.tscn
+res://globals/game.gd
+res://worlds/world.gd

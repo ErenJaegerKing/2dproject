@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxdmf5273gpfu"
+path="res://.godot/imported/42 22 romance LOOP.mp3-a2800d7fa4d0d465fbb94e6c2851b7d2.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/42 22 romance LOOP.mp3"
+dest_files=["res://.godot/imported/42 22 romance LOOP.mp3-a2800d7fa4d0d465fbb94e6c2851b7d2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -36,6 +36,7 @@ region = Rect2(308, 135, 56, 2)
 offset_right = 31.0
 offset_bottom = 26.0
 script = ExtResource("1_0jk47")
+metadata/_edit_use_anchors_ = true
 
 [node name="AvatarBox" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(26, 26)

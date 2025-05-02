@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://we5x5or7w0fk"
+path="res://.godot/imported/23 12 heart LOOP.mp3-bfa39a3e064536fef135e91977ae85df.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/23 12 heart LOOP.mp3"
+dest_files=["res://.godot/imported/23 12 heart LOOP.mp3-bfa39a3e064536fef135e91977ae85df.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

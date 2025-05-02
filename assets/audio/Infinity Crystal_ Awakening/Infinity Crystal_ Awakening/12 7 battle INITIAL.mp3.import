@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ce8u4twia48i1"
+path="res://.godot/imported/12 7 battle INITIAL.mp3-050d95b111805bf31c25a00399ef332f.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/12 7 battle INITIAL.mp3"
+dest_files=["res://.godot/imported/12 7 battle INITIAL.mp3-050d95b111805bf31c25a00399ef332f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

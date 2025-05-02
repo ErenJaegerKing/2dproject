@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cooj34wbq252l"
+path="res://.godot/imported/35 18 trust LOOP.mp3-2397bb8f2aaeffb26f6ca463d952f8e5.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/35 18 trust LOOP.mp3"
+dest_files=["res://.godot/imported/35 18 trust LOOP.mp3-2397bb8f2aaeffb26f6ca463d952f8e5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

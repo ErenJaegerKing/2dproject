@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjo6wyhe1fjnc"
+path="res://.godot/imported/40 21 marching LOOP.mp3-1115f9c8a3ffd4fa0d03f5c148a6ce96.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/40 21 marching LOOP.mp3"
+dest_files=["res://.godot/imported/40 21 marching LOOP.mp3-1115f9c8a3ffd4fa0d03f5c148a6ce96.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
