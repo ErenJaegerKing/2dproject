@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://qrs2b3lmohg0"]
+[gd_scene load_steps=11 format=4 uid="uid://qrs2b3lmohg0"]
 
 [ext_resource type="Script" uid="uid://360vu4thy25k" path="res://worlds/cave.gd" id="1_htu3i"]
 [ext_resource type="PackedScene" uid="uid://bripodqek0v8" path="res://player.tscn" id="2_awt7i"]
+[ext_resource type="AudioStream" uid="uid://bqclrpcku1hqo" path="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/27 14 BOSS fixing LOOP.mp3" id="2_ee1wd"]
 [ext_resource type="Texture2D" uid="uid://bwy507c0paavw" path="res://assets/Legacy-Fantasy/Assets/Tiles.png" id="3_gsn52"]
 [ext_resource type="PackedScene" uid="uid://pw4ddkrkbc2f" path="res://objects/mine_gate.tscn" id="4_2oyr6"]
 [ext_resource type="Script" uid="uid://dphq1418sqby1" path="res://classes/EntryPoint.gd" id="5_1bvjg"]
@@ -353,6 +354,7 @@ sources/1 = SubResource("TileSetAtlasSource_htu3i")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_htu3i")
+bgm = ExtResource("2_ee1wd")
 
 [node name="Player" parent="." instance=ExtResource("2_awt7i")]
 z_index = 2

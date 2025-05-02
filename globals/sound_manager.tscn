@@ -7,18 +7,26 @@
 [ext_resource type="AudioStream" uid="uid://depwaweg0a6oq" path="res://assets/audio/kenney_impact-sounds/Audio/impactTin_medium_000.ogg" id="5_61b4e"]
 
 [node name="SoundManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_tfwxo")
 
 [node name="SFX" type="Node" parent="."]
 
 [node name="Attack" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("1_8srb7")
+bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_tfwxo")
+bus = &"SFX"
 
 [node name="UIPress" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_yqr7p")
+bus = &"SFX"
 
 [node name="UIFocus" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_61b4e")
+bus = &"SFX"
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"
