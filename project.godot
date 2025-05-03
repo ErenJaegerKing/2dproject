@@ -30,10 +30,10 @@ SoundManager="*res://globals/sound_manager.tscn"
 
 window/size/viewport_width=384
 window/size/viewport_height=216
-window/size/always_on_top=true
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"
+window/size/always_on_top.editor=true
 
 [file_customization]
 

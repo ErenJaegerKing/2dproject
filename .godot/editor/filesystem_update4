@@ -1,12 +1,9 @@
-res://ui/title_screen.tscn
+res://worlds/cave.tscn
 res://ui/main_screen.tres
 res://assets/forest.tres
+res://enemies/boar_black.gd
 res://assets/shader/vignette.gdshader
 res://worlds/forest.tscn
-res://enemies/boar_black.gd
-res://classes/ShakerCamera.gd
 res://globals/game.tscn
-res://globals/game.gd
-res://player.gd
 res://player.tscn
-res://worlds/cave.tscn
+res://worlds/cave.gd
