@@ -2435,3 +2435,4 @@ sprite_frames = SubResource("SpriteFrames_dw050")
 frame_progress = 0.565395
 
 [connection signal="hurt" from="Graphics/HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="hit" from="Graphics/HitBox" to="." method="_on_hit_box_hit"]

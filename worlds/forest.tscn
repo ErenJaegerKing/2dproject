@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://celu1ukg4q65"]
+[gd_scene load_steps=13 format=4 uid="uid://celu1ukg4q65"]
 
 [ext_resource type="Script" uid="uid://bi5osqoijj61b" path="res://worlds/world.gd" id="1_cys0b"]
 [ext_resource type="PackedScene" uid="uid://bripodqek0v8" path="res://player.tscn" id="2_e5w3y"]
 [ext_resource type="AudioStream" uid="uid://34nnjyuhsius" path="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/21 11 forest LOOP.mp3" id="2_e8rh3"]
 [ext_resource type="TileSet" uid="uid://ctahw1xicmj0h" path="res://assets/forest.tres" id="3_e8rh3"]
+[ext_resource type="Script" uid="uid://doaka7j03551a" path="res://classes/ShakerCamera.gd" id="4_e8rh3"]
 [ext_resource type="PackedScene" uid="uid://pw4ddkrkbc2f" path="res://objects/mine_gate.tscn" id="4_v1rm2"]
 [ext_resource type="Script" uid="uid://dphq1418sqby1" path="res://classes/EntryPoint.gd" id="5_i4u1e"]
 [ext_resource type="PackedScene" uid="uid://k7hlv64ofeqt" path="res://objects/save_stone.tscn" id="6_e5w3y"]
@@ -29,6 +30,7 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+script = ExtResource("4_e8rh3")
 
 [node name="TileMap" type="Node" parent="."]
 

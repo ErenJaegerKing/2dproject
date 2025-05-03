@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://qrs2b3lmohg0"]
+[gd_scene load_steps=12 format=4 uid="uid://qrs2b3lmohg0"]
 
 [ext_resource type="Script" uid="uid://360vu4thy25k" path="res://worlds/cave.gd" id="1_htu3i"]
 [ext_resource type="PackedScene" uid="uid://bripodqek0v8" path="res://player.tscn" id="2_awt7i"]
 [ext_resource type="AudioStream" uid="uid://bqclrpcku1hqo" path="res://assets/audio/Infinity Crystal_ Awakening/Infinity Crystal_ Awakening/27 14 BOSS fixing LOOP.mp3" id="2_ee1wd"]
 [ext_resource type="Texture2D" uid="uid://bwy507c0paavw" path="res://assets/Legacy-Fantasy/Assets/Tiles.png" id="3_gsn52"]
 [ext_resource type="PackedScene" uid="uid://pw4ddkrkbc2f" path="res://objects/mine_gate.tscn" id="4_2oyr6"]
+[ext_resource type="Script" uid="uid://doaka7j03551a" path="res://classes/ShakerCamera.gd" id="4_6m78d"]
 [ext_resource type="Script" uid="uid://dphq1418sqby1" path="res://classes/EntryPoint.gd" id="5_1bvjg"]
 [ext_resource type="PackedScene" uid="uid://k7hlv64ofeqt" path="res://objects/save_stone.tscn" id="6_htu3i"]
 [ext_resource type="PackedScene" uid="uid://bg5250koupigt" path="res://enemies/boar_black.tscn" id="9_6nbad"]
@@ -368,6 +369,7 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_drag_margin = true
+script = ExtResource("4_6m78d")
 
 [node name="TileMap" type="Node" parent="."]
 

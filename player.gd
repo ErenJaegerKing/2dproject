@@ -92,7 +92,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		interacting_with.back().interact()
 
 	if event.is_action_pressed("pause"):
-		pause_screen.show_pause()
+		pause_screen.show_pause() 
 
 # 动作
 func tick_physics(state: State,delta: float) -> void:
@@ -324,6 +324,8 @@ func transition_state(from: State,to: State) -> void:
 		State.HURT:
 			animation_player.play("hurt")
 			
+			Game.shake_camera(4)
+			
 			# 受伤后扣血并被击退
 			status.health -= pending_damage.amount
 			var dir := pending_damage.source.global_position.direction_to(global_position)
@@ -357,3 +359,11 @@ func _on_hurt_box_hurt(hitbox: Variant) -> void:
 	pending_damage = Damage.new()
 	pending_damage.amount = 1
 	pending_damage.source = hitbox.owner
+
+
+func _on_hit_box_hit(hurtbox: Variant) -> void:
+	Game.shake_camera(2)
+	
+	Engine.time_scale = 0.01
+	await get_tree().create_timer(0.05, true, false, true).timeout
+	Engine.time_scale = 1
